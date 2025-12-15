@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import {
-  FaLinkedin,
+  FaInstagram,
   FaFacebook,
   FaTwitter,
   FaEnvelope,
@@ -43,7 +43,7 @@ const Footer = () => {
       <div className="footer-content">
         <div className="footer-container">
           {/* About */}
-          <div className="footer-about" data-aos="fade-right">      
+          <div className="footer-about" data-aos="fade-right">
             <div className="d-flex pb-1">
               <img src={logo} alt="Arah Infotech" className="brand-logo" />
               <h2 className="pt-1 text-primary">Arah Infotech</h2>
@@ -161,9 +161,23 @@ const Footer = () => {
           {/* Contact */}
           <div className="footer-contact" data-aos="fade-left" data-aos-delay="200">
             <h3>Contact Us</h3>
-            <p>
-              <FaMapMarkerAlt /> Hyderabad, Telangana, India
+            <p
+              style={{ cursor: "pointer" }}
+              onClick={() => window.open(
+                "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d104503.57046497233!2d78.28631148949816!3d17.436322580469458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb915dba4b9733%3A0xef02f177bfa0f25d!2sShanmukha%20Empires%2C%20Mega%20Hills%2C%20Madhapur%2C%20Hyderabad%2C%20Telangana%20500081!5e0!3m2!1sen!2sin",
+                "_blank"
+              )}
+            >
+              <FaMapMarkerAlt />{" "}
+              Ground Floor
+              Shanmukha Empires
+              83, Ayyappa Society Main Road
+              Mega Hills, Madhapur
+              Hyderabad, Telangana
+              (Beside Raju Gari Biryani)
+
             </p>
+
             <p>
               <FaEnvelope />{" "}
               <a href="mailto:ops@arahinfotech.net" className="contact-link">
@@ -178,14 +192,11 @@ const Footer = () => {
             </p>
 
             <div className="social-icons">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-                <FaLinkedin />
+              <a href="https://www.instagram.com/arahinfotechpvtltd?igsh=NHFmc2o2aWV1Y3pl" target="_blank" rel="noopener noreferrer">
+                <FaInstagram />
               </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.facebook.com/share/1A4YsEwFYy/" target="_blank" rel="noopener noreferrer">
                 <FaFacebook />
-              </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-                <FaTwitter />
               </a>
             </div>
           </div>

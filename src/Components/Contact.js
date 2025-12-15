@@ -97,12 +97,12 @@ const Contact = () => {
               <span className="fs-3 text-success">📍</span>
               <div>
                 <h5>Address</h5>
-                <p className="mb-0">123 Market Street, Hyderabad</p>
+                <p className="mb-0">Madhapur, Hyderabad</p>
               </div>
             </div>
             {/* Google Map Embed */}
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.2809740179882!2d78.38955227369082!3d17.446260901109376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91ac7d2a35b3%3A0xe30b8afc58d1c9ef!2sArah%20Infotech!5e0!3m2!1sen!2sin!4v1762363933576!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d104503.57046497233!2d78.28631148949816!3d17.436322580469458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb915dba4b9733%3A0xef02f177bfa0f25d!2sShanmukha%20Empires%2C%20Mega%20Hills%2C%20Madhapur%2C%20Hyderabad%2C%20Telangana%20500081!5e0!3m2!1sen!2sin!4v1765818491813!5m2!1sen!2sin" 
               title="error"
               width="100%"
               height="200"
