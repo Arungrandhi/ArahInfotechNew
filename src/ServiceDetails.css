@@ -1,0 +1,74 @@
+.services-container {
+  padding: 10px 0;
+  background-color: #000;
+  color: #fff;
+}
+
+
+.services-subtitle {
+  font-size: 1.1rem;
+  color: #ccc;
+}
+
+/* Card Style */
+.service-card {
+  background: transparent;
+  padding: 16px; /* ↓ reduced padding for smaller height */
+  width: 100%;
+   /* ✅ Control height */
+  border-radius: 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* ✅ Push button up slightly & save space */
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: 0.3s ease-in-out;
+  margin-bottom: 28px;
+}
+
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 20px rgba(0, 153, 255, 0.4);
+  border-color: #00d4ff;
+}
+
+/* Icon */
+.service-icon {
+  font-size: 50px;
+  margin-bottom: 25px;
+  color: #919495;
+  background: black;
+  margin: auto;
+  margin-top: 10px;
+}
+
+/* Text */
+.service-card h5 {
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.service-card p {
+  color: #ccc;
+  font-size: 0.92rem;
+}
+
+/* Button */
+.service-btn {
+  display: inline-block;
+ 
+  padding: 8px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  background: #00d4ff;
+  color: #000;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.service-btn:hover {
+  background: #0094ff;
+  color: #fff;
+}

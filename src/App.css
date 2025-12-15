@@ -1,0 +1,1326 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+
+/* ================================================================= */
+/* ---------- GLOBAL / PAGE SETUP ---------- */
+/* ================================================================= */
+* {
+  box-sizing: border-box;
+}
+html, body {
+  overflow-x: hidden;
+}
+.bannercontent{
+  color: #00c6ff;
+  font-size: 4rem;
+  font-weight: 500;
+  
+}
+
+.career-card {
+  background: #1a1a1a;
+  color: white;
+  border: 2px solid #007bff;
+  transition: 0.3s;
+}
+
+.career-card:hover {
+  transform: translateY(-5px);
+  border-color: #0d6efd;
+}
+
+.btn-gradient {
+  background: linear-gradient(45deg, #007bff, #00d4ff);
+  color: white;
+  border: none;
+}
+
+:root {
+  /* Colors */
+  --accent: #00d9ff; /* electric blue (primary brand color) */
+  --accent-2: #00aaff; /* secondary accent blue */
+  --muted: #cfcfcf;
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-dark-bg: rgba(4, 4, 4, 0.66);
+  /* Dimensions */
+  --nav-radius: 50px;
+}
+
+/* Apply Poppins font globally */
+body, html {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* ensure page black background */
+.page-bg {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: -1;
+}
+
+/* ================================================================= */
+/* ---------- MODERN GLASS NAVBAR (KEPT) ---------- */
+/* ================================================================= */
+
+/* header wrapper (sticky with margin-top 15px) */
+.header-wrapper {
+  width: 92%;
+  margin-top: 15px;
+  position: sticky;
+  top: 15px;
+  left: 4%;                 /* ✅ Move from left middle */
+  transform: translateX(-50%); /* ✅ Center align */
+  
+  z-index: 1100;
+  border-radius: var(--nav-radius);
+  padding: 10px 18px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
+  transition: all 280ms cubic-bezier(0.2, 0.9, 0.2, 1);
+  overflow: visible;
+}
+
+
+/* scrolled state: darker glass + blur + neon edge */
+.header-scrolled {
+  background: var(--glass-dark-bg);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), 0 0 20px rgba(0, 170, 255, 0.03) inset;
+  transform: translateY(-2px);
+  backdrop-filter: blur(18px); /* Subtle blur-on-scroll */
+}
+
+/* neon border glow on hover for whole nav */
+.header-wrapper:hover {
+  box-shadow: 0 12px 44px rgba(0, 170, 255, 0.06), 0 0 28px rgba(0, 170, 255, 0.02) inset;
+}
+
+/* inner layout */
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+/* Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.2px;
+}
+
+.brand-logo {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  border-radius: 10px;
+  filter: drop-shadow(0 6px 18px rgba(0, 217, 255, 0.12));
+}
+
+/* ---------- NAV LINKS (desktop) ---------- */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+/* base link */
+.nav-item-link,
+.nav-links > a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--muted);
+  font-weight: 600;
+  padding: 6px 4px;
+  transition: color 220ms ease, text-shadow 220ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* glow underline element */
+.underline {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  bottom: -6px;
+  width: 56%;
+  height: 3px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  box-shadow: 0 6px 18px rgba(0, 217, 255, 0.18);
+  transition: transform 260ms cubic-bezier(0.2, 0.9, 0.2, 1), opacity 220ms;
+  opacity: 0;
+  transform-origin: center;
+}
+
+/* hover: reveal glowing underline + text glow */
+.nav-item-link:hover,
+.nav-links > a:hover {
+  color: #fff;
+  text-shadow: 0 0 12px rgba(0, 217, 255, 0.18);
+}
+.nav-item-link:hover .underline,
+.nav-links > a:hover .underline {
+  transform: translateX(-50%) scaleX(1);
+  opacity: 1;
+}
+
+/* active link highlight */
+.active-link {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 170, 255, 0.12);
+}
+.active-link .underline {
+  transform: translateX(-50%) scaleX(1);
+  opacity: 1;
+}
+
+/* ---------- APPLY BUTTON (Desktop) ---------- */
+.apply-btn-desktop {
+  margin-left: 6px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: #002;
+  border: none;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 24px;
+  cursor: pointer;
+  box-shadow: 0 6px 22px rgba(0, 170, 255, 0.12);
+  transition: transform 140ms, box-shadow 220ms;
+}
+.apply-btn-desktop:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(0, 170, 255, 0.22);
+}
+
+/* ---------- HAMBURGER & MOBILE MENU ---------- */
+.hamburger {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: transform 180ms;
+}
+.hamburger:hover {
+  transform: scale(1.02);
+}
+
+/* hamburger lines (animated) */
+.hamburger-box {
+  width: 40px;
+  height: 24px;
+  display: inline-block;
+  position: relative;
+}
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+  width: 40px;
+  height: 3px;
+  background-color: #cfdcdc;
+  border-radius: 3px;
+  position: absolute;
+  left: 0;
+  transition: transform 300ms cubic-bezier(0.2, 0.9, 0.2, 1), opacity 200ms, background-color 200ms;
+}
+.hamburger-inner {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.hamburger-inner::before {
+  content: "";
+  top: -12px;
+}
+.hamburger-inner::after {
+  content: "";
+  top: 12px;
+}
+
+/* active state */
+.hamburger.is-active .hamburger-inner {
+  background-color: transparent;
+}
+.hamburger.is-active .hamburger-inner::before {
+  transform: translateY(12px) rotate(45deg);
+  background-color: var(--accent);
+}
+.hamburger.is-active .hamburger-inner::after {
+  transform: translateY(-12px) rotate(-45deg);
+  background-color: var(--accent);
+}
+
+/* mobile menu slide-in */
+.mobile-menu {
+  display: none;
+  position: absolute;
+  right: 4%;
+  left: 4%;
+  top: calc(100% + 14px);
+  background: linear-gradient(180deg, rgba(8, 8, 8, 0.88), rgba(20, 20, 20, 0.94));
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  transform-origin: top center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px) scale(0.98);
+  transition: transform 260ms cubic-bezier(0.2, 0.9, 0.2, 1), opacity 220ms;
+  z-index: 1050;
+}
+
+/* open */
+.mobile-menu.open {
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+/* mobile menu links */
+.mobile-menu a,
+.mobile-menu button {
+  display: block;
+  padding: 12px 14px;
+  color: #ddd;
+  text-decoration: none;
+  margin-bottom: 6px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+.mobile-menu a:hover,
+.mobile-menu button:hover {
+  background: rgba(255, 255, 255, 0.03);
+  color: white;
+}
+
+/* mobile services accordion */
+.mobile-services-btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  color: #ddd;
+  padding: 12px 14px;
+  font-weight: 700;
+}
+.mobile-services-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 260ms ease;
+  padding-left: 8px;
+}
+.mobile-services-panel.open {
+  max-height: 220px;
+}
+
+/* mobile apply button */
+.apply-btn-mobile {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: #002;
+  font-weight: 800;
+  border: none;
+  margin-top: 8px;
+}
+
+/* ================================================================= */
+/* ---------- GENERIC EFFECTS & UTILITIES (KEPT/CLEANED) ---------- */
+/* ================================================================= */
+
+/* Replaced with standard button styles or removed redundant nav code */
+
+/* Gradient Button - Unified to use primary accents */
+.btn-gradient {
+  /* Using standard accents for consistency */
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff !important;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+.btn-gradient:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0, 123, 255, 0.5);
+  /* Slightly darker on hover */
+  background: linear-gradient(135deg, #0096c7, #0062ff);
+}
+
+/* Hover underline effect (used in the old nav, kept as a utility) */
+.hover-underline-effect {
+  position: relative;
+  display: inline-block;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+.hover-underline-effect::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--accent);
+  transition: width 0.3s ease-in-out;
+}
+.hover-underline-effect:hover {
+  color: var(--accent) !important;
+}
+.hover-underline-effect:hover::after {
+  width: 100%;
+}
+
+/* Fade-in effect on page load */
+.animate__fadeIn {
+  animation: fadeIn 1s ease-in-out forwards;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* Card hover shadow and lift effect */
+.contact-card,
+.team-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Button hover effect */
+.btn-hover {
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Map hover zoom effect */
+.map-hover:hover {
+  transform: scale(1.02);
+}
+
+/* ================================================================= */
+/* ---------- PAGE SPECIFIC STYLES ---------- */
+/* ================================================================= */
+/* Footer base */
+.footer {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0a0a1a 0%, #141427 100%);
+  color: #f6f6f8;
+  padding: 3rem 0;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Overlay/backdrop (does not block interactions) */
+.footer-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(82,39,255,0.06), rgba(10,10,20,0.6));
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 0;
+  pointer-events: none; /* CRITICAL: allow hover/click through overlay */
+}
+
+/* content wrapper sits above overlay */
+.footer-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* grid layout */
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+/* headings */
+.footer h2 {
+  color: #fff;
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer h3 {
+  color: #f3f3f3;
+  font-size: 1.05rem;
+  margin-bottom: 0.6rem;
+  position: relative;
+}
+
+.footer h3::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(90deg, #6b4bff, #9b80ff);
+  border-radius: 3px;
+  margin-top: 8px;
+}
+
+/* About text */
+.footer-about p {
+  color: #dcdcdc;
+  line-height: 1.7;
+}
+
+/* Links list */
+.footer-links ul,
+.footer-services ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li,
+.footer-services li {
+  margin-bottom: 10px;
+}
+
+/* Link styling + hover */
+.footer-link {
+  color: #bfbfc6;
+  text-decoration: none;
+  transition: color 240ms ease, transform 240ms ease;
+  display: inline-block;
+  font-weight: 500;
+}
+
+.footer-link:hover,
+.footer-link:focus {
+  color: #2f88d5;
+  transform: translateX(8px);
+  text-decoration: none;
+  outline: none;
+}
+
+/* Contact links */
+.contact-link {
+  color: #ffd36b;
+  text-decoration: none;
+  transition: color 220ms;
+}
+
+.contact-link:hover,
+.contact-link:focus {
+  color: #fff;
+  text-decoration: underline;
+  outline: none;
+}
+
+/* social icons */
+.social-icons {
+  margin-top: 12px;
+  display: flex;
+  gap: 12px;
+}
+
+.social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: #d6d6db;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.03);
+  transition: transform 240ms cubic-bezier(.2,.9,.1,1), color 240ms, box-shadow 240ms;
+}
+
+.social-icons a:hover,
+.social-icons a:focus {
+  transform: translateY(-6px) scale(1.05);
+  color: #6b4bff;
+  box-shadow: 0 8px 24px rgba(107,75,255,0.18);
+  outline: none;
+}
+
+/* Footer bottom */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  text-align: center;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  color: #bdbdc2;
+  font-size: 0.95rem;
+}
+
+/* credits */
+.footer-bottom strong {
+  color: #9b80ff;
+}
+
+/* responsive tweaks */
+@media (max-width: 768px) {
+  .footer {
+    padding: 2rem 0;
+  }
+  .footer-container {
+    padding: 1rem;
+    gap: 1.25rem;
+  }
+}
+
+
+
+
+/* Contact Us Styles */
+.contact-us {
+  min-height: 100vh;
+  /* Retaining original gradient using hardcoded colors */
+  background: linear-gradient(to right, #00c8ff57, #0073ff7d);
+  padding: 2rem;
+}
+
+/* About Us Styles */
+.about-us-section {
+  background: linear-gradient(to right, #f9fbff, #eef3ff);
+  min-height: 100vh;
+}
+.about-subtitle {
+  max-width: 700px;
+  font-size: 1.1rem;
+}
+.team-photo {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border: 4px solid var(--accent); /* Unified border color */
+}
+.team-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Software Dev Styles */
+.software-dev-page {
+  color: #333;
+  position: relative;
+  overflow: hidden;
+}
+.hero-section {
+  min-height: 80vh;
+}
+.image-hover {
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+}
+.image-hover:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+}
+.text-hover {
+  transition: color 0.3s ease-in-out;
+}
+.text-hover:hover {
+  color: #0d6efd;
+}
+.btn-primary:hover,
+.btn-outline-primary:hover {
+  transform: scale(1.05);
+  transition: all 0.3s;
+}
+
+/* CTA Sections */
+.cta-section {
+  /* Retained original CTA gradient */
+  background: linear-gradient(to right, #0d6dfd80, #6710f279);
+  color: rgb(52, 49, 49);
+  position: relative;
+  z-index: 1;
+}
+.cta-sectionabt {
+  background: rgb(7, 7, 7);
+  color: rgb(52, 49, 49);
+  position: relative;
+  z-index: 1;
+}
+
+/* Careers Styles */
+.careers-section {
+  background: linear-gradient(135deg, #f7faff, #e3f2fd);
+  min-height: 100vh;
+}
+.nav-pills .nav-link {
+  color: #004aad;
+  border: 1px solid #004aad;
+  transition: all 0.3s ease;
+}
+.nav-pills .nav-link.active {
+  background: linear-gradient(90deg, #004aad, #007bff);
+  color: white;
+}
+.career-card {
+  background: transparent;
+  border: 2px solid #007bff; /* Blue border */
+  cursor: pointer;
+  transition: all 0.4s ease;
+  border-radius: 8px;
+}
+
+.career-card:hover {
+  transform: translateY(-8px);
+  border-color: #007bff;
+  box-shadow: 1px 1px 25px 8px rgba(0, 123, 255, 0.756); /* Medium blue glow */
+}
+.modal-backdrop {
+  z-index: 1050 !important;
+}
+.modal {
+  z-index: 2000 !important; /* Higher than header */
+}
+.modal-content {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+.modal-header {
+  background: linear-gradient(90deg, #004aad, #007bff);
+}
+.modal-body ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+.btn-primary {
+  background: linear-gradient(90deg, var(--accent-2), var(--accent));
+  border: none;
+}
+.btn-primary:hover {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transform: scale(1.05);
+}
+.modal-backdrop.show {
+  opacity: 0.5 !important;
+  z-index: 1050 !important;
+}
+
+.career-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* 🌟 Overall Section Styling */
+
+.services-section {
+  padding: 10px;
+  background: linear-gradient(180deg, #080808 0%, #0f0f0f 100%);
+  text-align: center;
+  overflow: hidden;
+}
+
+/* 🏞 Banner Section */
+.service-banner {
+  position: relative;
+  width: 100%;
+  height: 700px;
+  overflow: hidden;
+}
+
+.banner-img {
+  width: 100%;
+  height: 90%;
+  object-fit: cover;
+  filter: brightness(70%) contrast(110%);
+  transform: scale(1.05);
+  transition: transform 10s ease;
+}
+
+.service-banner:hover .banner-img {
+  transform: scale(1.1);
+}
+
+.banner-content {
+  position: absolute;
+  top: 35%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+  color: rgb(41, 23, 237);
+  text-align: center;
+}
+
+.banner-content h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  animation: fadeDown 1.2s ease-out;
+}
+
+.banner-content p {
+  font-size: 2rem;
+  margin-top: 10px;
+  color: #ffff;
+  animation: fadeUp 1.5s ease-in;
+}
+
+/* ✨ Section Title */
+.text-center h1,
+.text-center h2 {
+  font-size: 2.6rem;
+  color: #007bff;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: #555;
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
+
+/* 📦 Service Cards Layout */
+.services-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+  padding: 0px 20px;
+  margin: 40px 40px;
+}
+
+/* 💡 Service Card */
+.service-card {
+  background: #fff;
+  width: 500px;
+  padding: 40px 25px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  border-top: 4px solid transparent;
+  height: 420px;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+/* 🌀 Icon Animations */
+
+.service-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;              /* circular icons */
+  object-fit: cover;               /* keeps aspect ratio */
+  border: 3px solid #010305;       /* blue border for highlight */
+  padding: 5px;
+  transition: all 0.3s ease;       /* smooth hover animation */
+  background-color: rgb(176, 172, 226);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect */
+.service-icon:hover {
+  transform: scale(1.1);          
+  border-color: #ff4081;           
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+.service-card:hover .service-icon {
+  transform: scale(1.2) rotate(8deg);
+  filter: drop-shadow(0px 3px 6px rgba(0, 123, 255, 0.3));
+}
+
+/* 📝 Title & Description */
+.service-card h3 {
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+}
+
+.service-card p {
+  color: #555;
+  font-size: 0.96rem;
+  margin-bottom: 25px;
+  line-height: 1.6;
+  min-height: 70px;
+}
+
+/* 🔘 Read More Button */
+.read-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 25px;
+  cursor: progress;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+.read-btn:hover {
+  background: #0056b3;
+  transform: scale(1.08);
+  box-shadow: 0 6px 14px rgba(0, 123, 255, 0.45);
+}
+
+/* 🎨 Icon Colors */
+.html { color: #007bff; }
+.app { color: #ff6b00; }
+.ai { color: #2ecc71; }
+.ml { color: #9b59b6; }
+.dm { color: #e67e22; }
+.cloud { color: #00a8ff; }
+
+/* 📱 Responsive Design */
+@media (max-width: 992px) {
+  .service-card {
+    width: 90%;
+  }
+  .banner-content h1 {
+    font-size: 2.3rem;
+  }
+}
+
+/* 🔄 Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+/* 🤝 CLIENTS SECTION */
+.clients-section {
+  background: #f9fbff;
+  margin-top: 80px;
+  padding: 60px 0;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.clients-section h2 {
+  font-weight: 700;
+  color: #007bff;
+}
+
+.client-logo-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.client-logo-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 15px rgb(244, 247, 247);
+}
+
+.client-logo {
+  max-width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  /* filter: grayscale(80%); */
+  transition: all 0.3s ease;
+}
+
+.client-logo:hover {
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}   
+
+
+
+/* ================================================================= */
+/* ---------- BACKGROUND & REACT BITS STYLES ---------- */
+/* ================================================================= */
+
+/* Software Dev Background Animation */
+.background-design {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(
+      45deg,
+      rgba(13, 109, 253, 0.683) 0px,
+      rgba(13, 109, 253, 0.699) 2px,
+      transparent 2px,
+      transparent 20px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(13, 109, 253, 0.454) 0px,
+      rgba(13, 109, 253, 0.452) 2px,
+      transparent 2px,
+      transparent 20px
+    );
+  animation: rotateBackground 60s linear infinite;
+  z-index: -1;
+  transform-origin: center;
+  pointer-events: none;
+  opacity: 0.5;
+}
+@keyframes rotateBackground {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Staffing Background Animation */
+.background-designn {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    repeating-linear-gradient(
+      180deg,
+      rgba(0, 123, 255, 0.021) 0px,
+      rgba(0, 123, 255, 0.055) 2px,
+      transparent 2px,
+      transparent 30px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(0, 123, 255, 0.021) 0px,
+      rgba(0, 123, 255, 0.055) 2px,
+      transparent 2px,
+      transparent 30px
+    ),
+    radial-gradient(circle at center, rgba(0, 123, 255, 0.08), transparent 60%);
+  animation: rotateMesh 60s linear infinite;
+  z-index: -1;
+  pointer-events: none;
+}
+@keyframes rotateMesh {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Particle Reactbits */
+.particles-container,
+.galaxy-container,
+.aurora-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Hyperspeed Reactbits */
+#lights {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+}
+/* Be careful with generic canvas selector—ensure it's only for this animation */
+canvas {
+  width: 100%;
+  height: 100%;
+}
+
+/* Squares Reactbits */
+.squares-canvas {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* StarBorder Reactbits */
+.star-border-container {
+  display: inline-block;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.border-gradient-bottom {
+  position: absolute;
+  width: 300%;
+  height: 50%;
+  opacity: 0.7;
+  bottom: -12px;
+  right: -250%;
+  border-radius: 50%;
+  animation: star-movement-bottom linear infinite alternate;
+  z-index: 0;
+}
+
+.border-gradient-top {
+  position: absolute;
+  opacity: 0.7;
+  width: 300%;
+  height: 50%;
+  top: -12px;
+  left: -250%;
+  border-radius: 50%;
+  animation: star-movement-top linear infinite alternate;
+  z-index: 0;
+}
+
+.inner-content {
+  position: relative;
+  border: 1px solid #222;
+  background: #000;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  padding: 16px 26px;
+  border-radius: 20px;
+  z-index: 1;
+}
+
+@keyframes star-movement-bottom {
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-100%, 0%);
+    opacity: 0;
+  }
+}
+
+@keyframes star-movement-top {
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(100%, 0%);
+    opacity: 0;
+  }
+}
+
+/* Dot-Grid Reactbits */
+
+.dot-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.dot-grid__wrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.dot-grid__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+
+/* light-rays Reactbits */
+
+.light-rays-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  pointer-events: none;
+  z-index: 3;
+  overflow: hidden;
+}
+
+
+
+/* Electric-Border Reactbits */
+.electric-border {
+  --electric-light-color: oklch(from var(--electric-border-color) l c h);
+  --eb-border-width: 2px;
+  position: relative;
+  border-radius: inherit;
+  overflow: visible;
+  isolation: isolate;
+}
+.eb-svg {
+  position: fixed;
+  left: -10000px;
+  top: -10000px;
+  width: 10px;
+  height: 10px;
+  opacity: 0.001;
+  pointer-events: none;
+}
+.eb-content {
+  position: relative;
+  border-radius: inherit;
+  z-index: 1;
+}
+.eb-layers {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 2;
+}
+.eb-stroke,
+.eb-glow-1,
+.eb-glow-2,
+.eb-overlay-1,
+.eb-overlay-2,
+.eb-background-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+.eb-stroke {
+  border: var(--eb-border-width) solid var(--electric-border-color);
+}
+.eb-glow-1 {
+  border: var(--eb-border-width) solid oklch(from var(--electric-border-color) l c h / 0.6);
+  opacity: 0.5;
+  filter: blur(calc(0.5px + (var(--eb-border-width) * 0.25)));
+}
+.eb-glow-2 {
+  border: var(--eb-border-width) solid var(--electric-light-color);
+  opacity: 0.5;
+  filter: blur(calc(2px + (var(--eb-border-width) * 0.5)));
+}
+.eb-background-glow {
+  z-index: -1;
+  transform: scale(1.08);
+  filter: blur(32px);
+  opacity: 0.3;
+  background: linear-gradient(-30deg, var(--electric-light-color), transparent, var(--electric-border-color));
+}
+
+/* ================================================================= */
+/* ---------- RESPONSIVE ADJUSTMENTS ---------- */
+/* ================================================================= */
+
+@media (max-width: 980px) {
+  .nav-links {
+    display: none;
+  }
+  .hamburger {
+    display: block;
+  }
+  .apply-btn-desktop {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    height: auto;
+  }
+  .footer-right iframe {
+    height: 300px;
+  }
+}
+
+@media (max-width: 520px) {
+  .brand-text {
+    display: none;
+  } /* compact brand on very small screens */
+  .brand-logo {
+    width: 40px;
+    height: 40px;
+  }
+  .header-wrapper {
+    width: 96%;
+    padding: 10px 14px;
+  }
+}
+
+
+/* ================================================================= */
+/* ---------- Scroll Top  ---------- */
+/* ================================================================= */
+
+
+.scroll-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #00d4ff;
+  color: #000;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease-in-out;
+  z-index: 9999;
+}
+
+.scroll-top-btn.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.scroll-top-btn:hover {
+  background: #0094ff;
+  color: #fff;
+  transform: translateY(-4px);
+}
